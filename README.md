@@ -27,4 +27,4 @@ You can view the app's data at `localhost:3000/api/:resource`. Available resourc
 3. Implement design styling
     * Implement styling for the wireframe below as best you can in the remaining time.
 
-!()["/images/wireframe.jpg"]
+![](/public/images/wireframe.jpg)
