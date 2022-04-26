@@ -6,3 +6,30 @@ body {
 a {
   color: #00B7FF;
 }
+
+#info-panel {
+  display: flex;
+}
+
+#region-select {
+  display: flex;
+  flex-direction: column;
+}
+
+#region-details {
+  border: black 1px solid;
+  width: 100%;
+  position: relative;
+  left: -1px;
+  z-index: -1;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 5px 0 0 5px;
+  background-color: white;
+}
+
+button.selected {
+  border-right: 0;
+}
