@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   const nav = document.getElementById("region-select")
   const detailsHeader = document.querySelector("#region-details h2")
   const detailsInfo = document.querySelector("#region-details p")
-  const cityList = document.querySelector("#region-details ul")
+  const cityTableBody = document.querySelector("#region-details table tbody")
   
   provinces.forEach(province => {
     const button = document.createElement("button")
@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", async function() {
       detailsInfo.innerHTML = `<h3>Capital</h3> ${province.capital}`
 
       const cities = await fetchCitiesForProvice(province.name)
-      const cityListItemEls = getListItemElsForCities(cities)
-      cityList.replaceChildren(...cityListItemEls)
+      const cityTableRowEls = getTableRowElsForCities(cities)
+      cityTableBody.replaceChildren(...cityTableRowEls)
     })
     nav.appendChild(button)
   })
@@ -32,11 +32,20 @@ async function fetchCitiesForProvice(province) {
   return cities;
 } 
 
-function getListItemElsForCities(cities) {
+function getTableRowElsForCities(cities) {
   const els = cities.map(city => {
-    let cityListItem = document.createElement('li')
-    cityListItem.innerText = city.Municipality
-    return cityListItem
+    const cityTableRow = document.createElement('tr')
+    cityTableRow.append(
+      createTableDataEl(city.Municipality),
+      createTableDataEl(city["Population(2016)"])
+    )
+    return cityTableRow
   })
   return els
+}
+
+function createTableDataEl(data) {
+  const cell = document.createElement('td')
+  cell.innerText = data
+  return cell
 }
