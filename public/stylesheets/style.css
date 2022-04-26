@@ -18,10 +18,31 @@ a {
 
 #region-details {
   border: black 1px solid;
-  width: 100%;
   position: relative;
   left: -1px;
   z-index: -1;
+  padding: 10px;
+}
+
+#region-details h2 {
+  margin: 0;
+}
+
+#region-details table {
+  width: 100%;
+}
+
+th.cities {
+  text-align: left;
+  min-width: 300px;
+}
+
+th.population {
+  text-align: right;
+}
+
+tr td:last-child {
+  text-align: right;
 }
 
 button {
@@ -32,4 +53,11 @@ button {
 
 button.selected {
   border-right: 0;
+}
+
+tbody:before {
+  content:"@";
+  display:block;
+  line-height:10px;
+  text-indent:-99999px;
 }
