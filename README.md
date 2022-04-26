@@ -1,30 +1,18 @@
-# TMC Interview Skeleton
+# Canadian Cities Demo App
 
-> This is a skeleton app for the purpose of the TMC live coding interview. It is intentionally unpolished and unfinished. That's where you come in!
+A simple Express web application listing the 2016 populations of _some_ Candian cities by province. Note that the data it draws on is incomplete and for some provinces there are no cities listed at all.
 
-# App Overview
-To start the app fork this repo and clone it to your local machine.
+For population counts from previous years (2011, 2006, 2001, 1996) as well as other facts about the cities accounted for, access the raw data as JSON via the api `/api/cities`. You can also filter the JSON data to province/territory by using the route `/api/cities/:province` where `:province` is a variable. Some facts about the provinces/territories can be found at `/api/provinces`.
 
-Install dependencies
+# Starting the app locally 
+To start the app on your local machine first install the project dependencies...
 ```
 npm install
 ```
 
-Start the app (the app will be served on port 3000)
+Start up the web server...
 ```
 npm start
 ```
 
-You can view the app's data at `localhost:3000/api/:resource`. Available resources are `provinces` and `cities`
-
-# Task Outline
-1. Implement API route
-    * Implement a route for `/api/cities/:province` that returns all the cities for the requested province.
-    * **Stretch:** Sort cities by population in the response.
-2. Make API request and render data
-    * When a user selects a province, make a request to the new API route and display a list of the province's cities.
-    * **Stretch:** Display the city name in one column and the 2016 population in another column.
-3. Implement design styling
-    * Implement styling for the wireframe below as best you can in the remaining time.
-
-![](/public/images/wireframe.jpg)
+And point your browser of choice to  `localhost:3000`
