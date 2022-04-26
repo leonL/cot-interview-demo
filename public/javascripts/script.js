@@ -16,9 +16,8 @@ document.addEventListener("DOMContentLoaded", async function() {
       this.classList.add("selected")
       
       detailsHeader.innerText = province.name
-
       const cities = await fetchCitiesForProvice(province.name)
-      const cityTableRowEls = getTableRowElsForCities(cities)
+      const cityTableRowEls = getTableRowElsForCities(cities, province.capital)
       cityTableBody.replaceChildren(...cityTableRowEls)
     })
     nav.appendChild(button)
@@ -33,20 +32,40 @@ async function fetchCitiesForProvice(province) {
   return cities;
 } 
 
-function getTableRowElsForCities(cities) {
+function getTableRowElsForCities(cities, capital) {
   const els = cities.map(city => {
     const cityTableRow = document.createElement('tr')
+    
+    let cityNameCellChildEls;
+    if (city.Municipality === capital) { 
+      cityNameCellChildEls = [
+        createSpanElement(city.Municipality, true),
+        "\u00A0",
+        createSpanElement("(capital)")
+      ]
+    } else {
+      cityNameCellChildEls = [createSpanElement(city.Municipality)]
+    } 
+    const cityPopCellChildEl = [createSpanElement(city["Population(2016)"])]
+
     cityTableRow.append(
-      createTableDataEl(city.Municipality),
-      createTableDataEl(city["Population(2016)"])
+      createTableDataEl(cityNameCellChildEls),
+      createTableDataEl(cityPopCellChildEl)
     )
     return cityTableRow
   })
   return els
 }
 
-function createTableDataEl(data) {
+function createSpanElement(text, bold = false) {
+  const span = document.createElement('span')
+  span.innerText = text
+  if (bold) span.className = "bold"
+  return span
+ }
+
+function createTableDataEl(children) {
   const cell = document.createElement('td')
-  cell.innerText = data
+  cell.append(...children)
   return cell
 }

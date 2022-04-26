@@ -55,6 +55,10 @@ button.selected {
   border-right: 0;
 }
 
+span.bold {
+  font-weight: bold;
+}
+
 tbody:before {
   content:"@";
   display:block;
