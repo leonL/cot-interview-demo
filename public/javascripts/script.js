@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     button.addEventListener("click", async function() {
       [...nav.children].forEach(child => child.classList.remove("selected"))
       this.classList.add("selected")
+      
       detailsHeader.innerText = province.name
-      detailsInfo.innerHTML = `<h3>Capital</h3> ${province.capital}`
 
       const cities = await fetchCitiesForProvice(province.name)
       const cityTableRowEls = getTableRowElsForCities(cities)
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     })
     nav.appendChild(button)
   })
+  nav.firstChild.click();
 })
 
 async function fetchCitiesForProvice(province) {
