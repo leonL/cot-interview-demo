@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", async function() {
   
   const nav = document.getElementById("region-select")
   const detailsHeader = document.querySelector("#region-details h2")
-  const detailsInfo = document.querySelector("#region-details p")
   const cityTableBody = document.querySelector("#region-details table tbody")
   
   provinces.forEach(province => {
